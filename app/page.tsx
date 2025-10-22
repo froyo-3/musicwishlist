@@ -4,11 +4,14 @@ import Image from "next/image";
 import Head from "next/head";
 import { useEffect } from "react";
 import {
-  redirectToAuthCodeFlow,
-  getAccessToken,
   fetchProfile,
   populateUI
-} from "../utils/spotify-auth";
+} from "../utils/script";
+
+import {
+  redirectToAuthCodeFlow,
+  getAccessToken
+} from "../utils/authCode";
 
 export default function Home() {
   useEffect(() => {
