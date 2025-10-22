@@ -5,7 +5,7 @@ import {
   getAccessToken,
   fetchProfile,
   populateUI
-} from "../utils/spotify-auth";
+} from "../../utils/spotify-auth";
 
 export default function Callback() {
   useEffect(() => {
