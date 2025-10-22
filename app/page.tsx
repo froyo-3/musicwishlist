@@ -5,9 +5,22 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
+    
     async function handleSpotifyAuth() {
+      const clientId = "c7ff425b1ff74405b3e017a5d490919e";
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+
+      if (!code) {
+        redirectToAuthCodeFlow(clientId);
+      } else {
+        const accessToken = await getAccessToken(clientId, code);
+        const profile = await fetchProfile(accessToken);
+        console.log(profile);
+        populateUI(profile);
+      }
        function generateCodeVerifier(length: number) {
-  let text = '';
+        let text = '';
   let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
   for (let i = 0; i < length; i++) {
